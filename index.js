@@ -95,7 +95,7 @@ class LevitonDecoraSmartPlatform {
       this.log.error(`Failed to get leviton accountID: ${err.message}`)
     }
     try {
-      var { primaryResidenceId: residenceID, id: residenceObjectID } = await Leviton.getResidentialAccounts({
+      var { primaryResidenceId: residenceID, id: residenceObjectID } = await Leviton.getResidentialAccountsV2({
         accountID,
         token,
       })
@@ -117,7 +117,7 @@ class LevitonDecoraSmartPlatform {
       if (!Array.isArray(devices) || devices.length < 1) {
         this.log.info('No devices found for primary residence id. Trying residence v2')
 
-        const accountsV2Response = await Leviton.getResidentialAccountsV2({
+        const accountsV2Response = await Leviton.getResidentialAccounts({
           residenceObjectID,
           token,
         })
